@@ -78,7 +78,7 @@ LPC_SYNC	lpc_synchronize_info;
 /* ##### ##### Prototypes ##### ##### */
 /**************************************/
 
-void						LPC_InitializeISR(void);
+void						LPC_Initialize(void);
 void						LPC_ISR(void);
 
 __inline UINT16				LPC_ReadSignal(void);

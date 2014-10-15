@@ -41,7 +41,7 @@ extern volatile UINT16 * const gpio_interrupt_active_mode_clear_register;
 extern void GPIO_Initialize(void);
 extern void GPIO_ISR(void);
 
-extern void LPC_InitializeISR(void);
+extern void LPC_Initialize(void);
 extern void LPC_ISR(void);
 
 #endif
