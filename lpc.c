@@ -23,26 +23,26 @@
 #define LPC_DIR_MASK		(0x2)		// 0000 0000 0000 0010 b
 
 typedef enum {
-	FRAME_START	= 0x0,			// 0000b
-	FRAME_ABORT	= 0xF			// 1111b
+	FRAME_START		= 0x0,		// 0000b
+	FRAME_ABORT		= 0xF		// 1111b
 } LPC_FRAME;
 
 typedef enum {
-	CYCTYPE_IO	= 0x0,			// 00b
-	CYCTYPE_MEMORY	= 0x1,			// 01b
-	CYCTYPE_DMA	= 0x3			// 11b
+	CYCTYPE_IO		= 0x0,		// 00b
+	CYCTYPE_MEMORY		= 0x1,		// 01b
+	CYCTYPE_DMA		= 0x3		// 11b
 } LPC_CYCTYPE;
 
 typedef enum {
-	DIR_READ	= 0x0,			// 0b
-	DIR_WRITE	= 0x1			// 1b
+	DIR_READ		= 0x0,		// 0b
+	DIR_WRITE		= 0x1		// 1b
 } LPC_DIR;
 
 typedef enum {
-	SYNC_READY	= 0x0,			// 0000b
-	SYNC_SHORT_WAIT	= 0x5,			// 0101b
-	SYNC_LONG_WAIT	= 0x6,			// 0110b
-	SYNC_ERROR	= 0xA			// 1010b
+	SYNC_READY		= 0x0,		// 0000b
+	SYNC_SHORT_WAIT		= 0x5,		// 0101b
+	SYNC_LONG_WAIT		= 0x6,		// 0110b
+	SYNC_ERROR		= 0xA		// 1010b
 } LPC_SYNC;
 
 typedef enum {
