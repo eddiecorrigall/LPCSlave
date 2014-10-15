@@ -7,7 +7,7 @@ State machine IO driver for the Low-Pin Count bus slave. The source also include
 
 The current project was used in a prototype I worked on for Pitney Bowes. For your application, you will need to modify the code.
 
-  1. Set up an interupt service routine (ISR) for on your embedded device. Modify and invoke the GPIO_ISR function in gpio.c.
+  1. Set up an interupt service routine (ISR) for on your embedded device, then modify and invoke the GPIO_ISR function in gpio.c.
   2. When your device is booting ensure a call to GPIO_Initialize/LPC_Initialize is made.
 
 ## Literature
