@@ -9,25 +9,25 @@
  *
  * Single-Byte >>>
  * 
- * State	Command					Expected Return Value
+ * State	Command				Expected Return Value
  *
- * LENGTH	"lpc io_write 0100 01"	N/A
- * DATA		"lpc io_write 0000 69"	N/A
- * CHECKSUM	"lpc io_write 0101 69"	N/A
+ * LENGTH	"lpc io_write 0100 01"		N/A
+ * DATA		"lpc io_write 0000 69"		N/A
+ * CHECKSUM	"lpc io_write 0101 69"		N/A
  * ACK		"lpc io_read 0102"		0xA0
  * 
  * LENGTH	"lpc io_read 0100"		0x01
  * DATA		"lpc io_read 0000"		0x69
  * CHECKSUM	"lpc io_read 0101"		0x69
- * ACK		"lpc io_write 0102 A0"	N/A
+ * ACK		"lpc io_write 0102 A0"		N/A
  *
  * Multi-Byte >>>
  *
- * LENGTH	"lpc io_write 0100 03"	N/A
- * DATA		"lpc io_write 0000 69"	N/A
- * DATA		"lpc io_write 0001 3C"	N/A
- * DATA		"lpc io_write 0002 5A"	N/A
- * CHECKSUM	"lpc io_write 0101 FF"	N/A
+ * LENGTH	"lpc io_write 0100 03"		N/A
+ * DATA		"lpc io_write 0000 69"		N/A
+ * DATA		"lpc io_write 0001 3C"		N/A
+ * DATA		"lpc io_write 0002 5A"		N/A
+ * CHECKSUM	"lpc io_write 0101 FF"		N/A
  * ACK		"lpc io_read 0102"		0xA0
  *
  * LENGTH	"lpc io_read 0100"		0x03
@@ -35,18 +35,18 @@
  * DATA		"lpc io_read 0000"		0x69
  * DATA		"lpc io_read 0001"		0x3C
  * CHECKSUM	"lpc io_read 0101"		0xFF
- * ACK		"lpc io_write 0102 A0"	N/A
+ * ACK		"lpc io_write 0102 A0"		N/A
  *
  * ### Test #2 - Test checksum by causing the checksum to overflow
  *
- * State	Command					Expected Return Value
+ * State	Command				Expected Return Value
  *
- * LENGTH	"lpc io_write 0100 04"	N/A
- * DATA		"lpc io_write 0000 5A"	N/A
- * DATA		"lpc io_write 0001 69"	N/A
- * DATA		"lpc io_write 0002 3C"	N/A
- * DATA		"lpc io_write 0003 D2"	N/A
- * CHECKSUM	"lpc io_write 0101 D1"	N/A
+ * LENGTH	"lpc io_write 0100 04"		N/A
+ * DATA		"lpc io_write 0000 5A"		N/A
+ * DATA		"lpc io_write 0001 69"		N/A
+ * DATA		"lpc io_write 0002 3C"		N/A
+ * DATA		"lpc io_write 0003 D2"		N/A
+ * CHECKSUM	"lpc io_write 0101 D1"		N/A
  * ACK		"lpc io_read 0102"		0xA0
  *
  * LENGTH	"lpc io_read 0100"		0x04
@@ -55,16 +55,16 @@
  * DATA		"lpc io_read 0003"		0xD2
  * DATA		"lpc io_read 0001"		0x69
  * CHECKSUM	"lpc io_read 0101"		0xD1
- * ACK		"lpc io_write 0102 A0"	N/A
+ * ACK		"lpc io_write 0102 A0"		N/A
  *
  * ### Test #3 - Test checksum by giving bad data
  * 
- * State	Command					Expected Return Value
+ * State	Command				Expected Return Value
  *
- * LENGTH	"lpc io_write 0100 02"	N/A
- * DATA		"lpc io_write 0001 12"	N/A
- * DATA		"lpc io_write 0000 34"	N/A
- * CHECKSUM	"lpc io_write 0101 70"	N/A		(Give peripheral a bad checksum)
+ * LENGTH	"lpc io_write 0100 02"		N/A
+ * DATA		"lpc io_write 0001 12"		N/A
+ * DATA		"lpc io_write 0000 34"		N/A
+ * CHECKSUM	"lpc io_write 0101 70"		N/A			(Give peripheral a bad checksum)
  * ACK		"lpc io_read 0102"		0xAF
  *
  * LENGTH	"lpc io_write 0100 02"	N/A
@@ -76,38 +76,38 @@
  * LENGTH	"lpc io_read 0100"		0x02
  * DATA		"lpc io_read 0001"		0x12
  * DATA		"lpc io_read 0000"		0x34
- * CHECKSUM "lpc io_read 0101"		0x46
- * ACK		"lpc io_write 0102 AF"	N/A		(Claim that the peripheral gave bad data)
+ * CHECKSUM	"lpc io_read 0101"		0x46
+ * ACK		"lpc io_write 0102 AF"		N/A			(Claim that the peripheral gave bad data)
  *
  * LENGTH	"lpc io_read 0100"		0x02
  * DATA		"lpc io_read 0001"		0x12
  * DATA		"lpc io_read 0000"		0x34
  * CHECKSUM	"lpc io_read 0101"		0x46
- * ACK		"lpc io_write 0102 A0"	N/A
+ * ACK		"lpc io_write 0102 A0"		N/A
  *
  */
 
 // Note: All addresses referencing data are in the form of 00xx where xx is [0, 0xFF)
 
-#define MSG_MAX_LENGTH			(256)
+#define MSG_MAX_LENGTH		(256)
 
-#define MSG_ADDR_OF_DATA		(0x0000)
+#define MSG_ADDR_OF_DATA	(0x0000)
 // ...
-#define MSG_ADDR_OF_LENGTH		(MSG_MAX_LENGTH + 0)
+#define MSG_ADDR_OF_LENGTH	(MSG_MAX_LENGTH + 0)
 #define MSG_ADDR_OF_CHECKSUM	(MSG_MAX_LENGTH + 1)
-#define MSG_ADDR_OF_ACK			(MSG_MAX_LENGTH + 2)
+#define MSG_ADDR_OF_ACK		(MSG_MAX_LENGTH + 2)
 
 typedef enum {
 	ACK_PASS = 0xA0,
 	ACK_FAIL = 0xAF
 } MSG_ACK;
 
-BOOL		usr_has_control = FALSE;
+BOOL	usr_has_control = FALSE;
 
-MSG_ACK		msg_ack;
-UINT8		msg_length;
-UINT8		msg_checksum;
-UINT8		msg_data[MSG_MAX_LENGTH];
+MSG_ACK	msg_ack;
+UINT8	msg_length;
+UINT8	msg_checksum;
+UINT8	msg_data[MSG_MAX_LENGTH];
 
 /* ### Mater Driver Code: Send Msg to Peripheral ###
  *
