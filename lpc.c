@@ -12,7 +12,7 @@
 /* ##### ##### Globals ##### ##### */
 /***********************************/
 
-#define LPC_MASK			(0x7F)		// 0000 0000 0111 1111 b
+#define LPC_MASK		(0x7F)		// 0000 0000 0111 1111 b
 
 #define LPC_LCLK_MASK		(0x40)		// 0000 0000 0100 0000 b
 #define LPC_LRESET_MASK		(0x20)		// 0000 0000 0010 0000 b
@@ -23,46 +23,46 @@
 #define LPC_DIR_MASK		(0x2)		// 0000 0000 0000 0010 b
 
 typedef enum {
-	FRAME_START	= 0x0,					// 0000b
-	FRAME_ABORT	= 0xF					// 1111b
+	FRAME_START	= 0x0,			// 0000b
+	FRAME_ABORT	= 0xF			// 1111b
 } LPC_FRAME;
 
 typedef enum {
-	CYCTYPE_IO		= 0x0,				// 00b
-	CYCTYPE_MEMORY	= 0x1,				// 01b
-	CYCTYPE_DMA		= 0x3				// 11b
+	CYCTYPE_IO	= 0x0,			// 00b
+	CYCTYPE_MEMORY	= 0x1,			// 01b
+	CYCTYPE_DMA	= 0x3			// 11b
 } LPC_CYCTYPE;
 
 typedef enum {
-	DIR_READ	= 0x0,					// 0b
-	DIR_WRITE	= 0x1					// 1b
+	DIR_READ	= 0x0,			// 0b
+	DIR_WRITE	= 0x1			// 1b
 } LPC_DIR;
 
 typedef enum {
-	SYNC_READY			= 0x0,			// 0000b
-	SYNC_SHORT_WAIT		= 0x5,			// 0101b
-	SYNC_LONG_WAIT		= 0x6,			// 0110b
-	SYNC_ERROR			= 0xA			// 1010b
+	SYNC_READY	= 0x0,			// 0000b
+	SYNC_SHORT_WAIT	= 0x5,			// 0101b
+	SYNC_LONG_WAIT	= 0x6,			// 0110b
+	SYNC_ERROR	= 0xA			// 1010b
 } LPC_SYNC;
 
 typedef enum {
 	// Note: These enumerations are assigned values for debugging purposes only
-	STATE_IDLE					= 0,
-	STATE_CYCTYPE_AND_DIR		= 1,
+	STATE_IDLE				= 0,
+	STATE_CYCTYPE_AND_DIR			= 1,
 	STATE_ADDR_0				= 2,
 	STATE_ADDR_1				= 3,
 	STATE_ADDR_2				= 4,
 	STATE_ADDR_3				= 5,
 	STATE_DATA_WRITE_0			= 6,
 	STATE_DATA_WRITE_1			= 7,
-	STATE_TAR_TO_PERIPHERAL_0	= 8,
-	STATE_TAR_TO_PERIPHERAL_1	= 9,
-	STATE_SYNC					= 10,
+	STATE_TAR_TO_PERIPHERAL_0		= 8,
+	STATE_TAR_TO_PERIPHERAL_1		= 9,
+	STATE_SYNC				= 10,
 	STATE_DATA_READ_0			= 11,
 	STATE_DATA_READ_1			= 12,
 	STATE_TAR_TO_HOST_0			= 13,
 	STATE_TAR_TO_HOST_1			= 14,
-	STATE_ABORT					= 15
+	STATE_ABORT				= 15
 } LPC_IO_CYCLE_STATE;
 
 LPC_IO_CYCLE_STATE lpc_state;
@@ -78,22 +78,24 @@ LPC_SYNC	lpc_synchronize_info;
 /* ##### ##### Prototypes ##### ##### */
 /**************************************/
 
-void						LPC_Initialize(void);
-void						LPC_ISR(void);
+void				LPC_Initialize(void);
+void				LPC_ISR(void);
 
-__inline UINT16				LPC_ReadSignal(void);
-__inline void				LPC_WriteSignal(UINT8 values);
+__inline UINT16			LPC_ReadSignal(void);
+__inline void			LPC_WriteSignal(UINT8 values);
 
-__inline void				LPC_TurnAroundToPeripheral(void);
-__inline void				LPC_TurnAroundToHost(void);
+__inline void			LPC_TurnAroundToPeripheral(void);
+__inline void			LPC_TurnAroundToHost(void);
 
 __inline LPC_IO_CYCLE_STATE	LPC_GetState(void);
-__inline void				LPC_SetState(LPC_IO_CYCLE_STATE state);
+__inline void			LPC_SetState(LPC_IO_CYCLE_STATE state);
 
-void						LPC_HandleCycle(void);
+void				LPC_HandleCycle(void);
 
-extern BOOL					LPC_HandleIORead(UINT16 address, UINT8 *data);
-extern void					LPC_HandleIOWrite(UINT16 address, UINT8 data);
+// Protocols for io read and write
+
+extern BOOL			LPC_HandleIORead(UINT16 address, UINT8 *data);
+extern void			LPC_HandleIOWrite(UINT16 address, UINT8 data);
 
 /*************************************/
 /* ##### ##### Functions ##### ##### */
