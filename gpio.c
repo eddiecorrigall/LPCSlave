@@ -11,16 +11,16 @@
 
 #define GPIO_BASE_REGISTER	(0x20400)
 
-volatile UINT16 * const gpio_dir_register							= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x00);
-volatile UINT16 * const gpio_dir_clear_register						= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x04);
+volatile UINT16 * const gpio_dir_register				= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x00);
+volatile UINT16 * const gpio_dir_clear_register				= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x04);
 
-volatile UINT16 * const gpio_data_register							= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x08);
-volatile UINT16 * const gpio_data_clear_register					= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x0C);
+volatile UINT16 * const gpio_data_register				= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x08);
+volatile UINT16 * const gpio_data_clear_register			= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x0C);
 
-volatile UINT16 * const gpio_interrupt_enable_register				= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x10);
-volatile UINT16 * const gpio_interrupt_disable_register				= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x14);
+volatile UINT16 * const gpio_interrupt_enable_register			= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x10);
+volatile UINT16 * const gpio_interrupt_disable_register			= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x14);
 
-volatile UINT16 * const gpio_interrupt_status_register				= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x18);
+volatile UINT16 * const gpio_interrupt_status_register			= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x18);
 volatile UINT16 * const gpio_interrupt_status_clear_register		= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x1C);
 
 volatile UINT16 * const gpio_interrupt_trigger_mode_register		= (volatile UINT16 *)(GPIO_BASE_REGISTER + 0x20);
