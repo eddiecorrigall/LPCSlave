@@ -67,10 +67,10 @@
  * CHECKSUM	"lpc io_write 0101 70"		N/A			(Give peripheral a bad checksum)
  * ACK		"lpc io_read 0102"		0xAF
  *
- * LENGTH	"lpc io_write 0100 02"	N/A
- * DATA		"lpc io_write 0001 12"	N/A
- * DATA		"lpc io_write 0000 34"	N/A
- * CHECKSUM	"lpc io_write 0101 46"	N/A
+ * LENGTH	"lpc io_write 0100 02"		N/A
+ * DATA		"lpc io_write 0001 12"		N/A
+ * DATA		"lpc io_write 0000 34"		N/A
+ * CHECKSUM	"lpc io_write 0101 46"		N/A
  * ACK		"lpc io_read 0102"		0xA0
  *
  * LENGTH	"lpc io_read 0100"		0x02
