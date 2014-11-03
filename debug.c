@@ -2,7 +2,7 @@
 
 UINT8	debug_buffer[DEBUG_BUFFER_LENGTH];
 UINT8	debug_buffer_initial_byte = DEBUG_BUFFER_INITIAL_BYTE;
-int		debug_buffer_index = 0;
+int	debug_buffer_index = 0;
 
 void DEBUG_ClearBuffer(UINT8 initial_byte)
 {
